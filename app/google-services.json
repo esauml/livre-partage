@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "354502717535",
+    "firebase_url": "https://livre-partager-android.firebaseio.com",
+    "project_id": "livre-partager-android",
+    "storage_bucket": "livre-partager-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354502717535:android:09de072f000aef42906bea",
+        "android_client_info": {
+          "package_name": "com.iut.lpsmin.livrepartage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354502717535-ltohppdj1pfumn2k241m3ti4t3l3rt84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjXjBEFI4kZdNZm4OWG6u-86IKe6BfDEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354502717535-ltohppdj1pfumn2k241m3ti4t3l3rt84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
