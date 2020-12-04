@@ -1,17 +1,20 @@
 package com.iut.lpsmin.livrepartage.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Publication {
     private String datePublication;
-    private int status;
+    private boolean status;
     private Utilisateur utilisateur;
     private Livre livre;
 
     public Publication() {
     }
 
-    public Publication(String datePublication, int status, Utilisateur utilisateur, Livre livre) {
-        this.datePublication = datePublication;
-        this.status = status;
+    public Publication( Utilisateur utilisateur, Livre livre) {
+        this.datePublication = new SimpleDateFormat("yyyy.MM.dd").format(Calendar.getInstance().getTime());
+        this.status = false;
         this.utilisateur = utilisateur;
         this.livre = livre;
     }
@@ -34,11 +37,11 @@ public class Publication {
         this.datePublication = datePublication;
     }
 
-    public int getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
