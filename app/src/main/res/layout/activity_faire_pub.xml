@@ -116,7 +116,8 @@
 
         android:text="Ajouter Photo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+        android:layout_marginRight="16dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -124,6 +125,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_camera"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="368dp" />
+        tools:layout_editor_absoluteY="368dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
