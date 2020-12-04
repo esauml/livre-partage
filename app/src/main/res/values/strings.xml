@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">LivrePartage</string>
+    <string name="titre">titre</string>
     <string name="password">Password</string>
     <string name="email_address">Email Address</string>
+    <string name="bookworm">BookWorm</string>
+    <string name="full_name">Full Name</string>
+    <string name="button">Button</string>
+    <string name="inTextview">inTextView</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="log_in_and_get_get_ready_to_borrow_your_favorite_book">Log in and get get ready to borrow your favorite book</string>
+    <string name="loginBtn">LogIn</string>
+    <string name="new_here_click_here_to_register">New here? Click here to register</string>
+    <string name="register">Register</string>
 </resources>
