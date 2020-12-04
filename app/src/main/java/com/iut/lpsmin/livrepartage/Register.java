@@ -39,7 +39,7 @@ public class Register extends AppCompatActivity {
         mLoginBtn       = findViewById(R.id.loginBtn);
 
         fAuth           = FirebaseAuth.getInstance();
-        progressBar     = findViewById(R.id.progressBar);
+        progressBar     = findViewById(R.id.loginProgressBar);
 //
         if (fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -83,4 +83,8 @@ public class Register extends AppCompatActivity {
         });
     }
 
+    public void goToLogin(View view) {
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
+    }
 }
