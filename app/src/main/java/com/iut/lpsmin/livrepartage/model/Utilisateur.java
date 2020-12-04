@@ -3,7 +3,9 @@ package com.iut.lpsmin.livrepartage.model;
 import java.util.List;
 
 public class Utilisateur {
+    private String fullName;
     private String email;
+    private String phoneNumber;
     private String motPasse;
     private String dateDernierAccess;
     private String dateAccess;
@@ -20,11 +22,29 @@ public class Utilisateur {
         this.livres = livres;
     }
 
-    public Utilisateur(String email, String motPasse, String dateDernierAccess, String dateAccess) {
+    public Utilisateur(String fullName, String email,String phoneNumber, String motPasse, String dateDernierAccess, String dateAccess) {
+        this.fullName = fullName;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.motPasse = motPasse;
         this.dateDernierAccess = dateDernierAccess;
         this.dateAccess = dateAccess;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -70,7 +90,9 @@ public class Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur{" +
-                "email='" + email + '\'' +
+                "fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", motPasse='" + motPasse + '\'' +
                 ", dateDernierAccess='" + dateDernierAccess + '\'' +
                 ", dateAccess='" + dateAccess + '\'' +
