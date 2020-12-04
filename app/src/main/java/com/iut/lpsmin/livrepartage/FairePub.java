@@ -23,6 +23,7 @@ public class FairePub extends AppCompatActivity {
     private TextInputLayout textEdition;
     private TextInputLayout textVille;
     private Firebase mDatabaseRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
