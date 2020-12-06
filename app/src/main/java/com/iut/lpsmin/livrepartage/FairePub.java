@@ -48,9 +48,9 @@ import java.util.Date;
 
 
 public class FairePub extends AppCompatActivity {
-
     public static final int CAMARA_REQUEST_CODE = 102;
     public static final int GALERIE_RECUEST = 105;
+    public static final int CAMARA_REQUEST = 101;
     private Livre l;
     private Publication p;
     private Genre g;
@@ -63,9 +63,9 @@ public class FairePub extends AppCompatActivity {
     String currentPhotoPath;
     Button cam,gal;
     File photo;
+    String name;
     StorageReference storRef;
     Uri contentUri;
-    String photoName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +99,7 @@ public class FairePub extends AppCompatActivity {
 
     private void askCamaraPerm() {
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 101);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMARA_REQUEST);
         }else{
             dispatchTakePictureIntent();
         }
@@ -113,36 +113,34 @@ public class FairePub extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMARA_REQUEST_CODE) {
             Log.d("TAG","aaaaa"+currentPhotoPath);
-               photo = new File(currentPhotoPath);
+
+               File photo = new File(currentPhotoPath);
                 livreAff.setText("Image garde");
             Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            this.contentUri = Uri.fromFile(photo);
+            Uri contentUri = Uri.fromFile(photo);
             mediaScanIntent.setData(contentUri);
             this.sendBroadcast(mediaScanIntent);
-            photoName=photo.getName();
-
+            name=photo.getName();
+            this.contentUri=contentUri;
+            //uploadPhototoFF(photo.getName(),contentUri);
         }
         if (requestCode == GALERIE_RECUEST) {
-             this.contentUri=data.getData();
+            Uri contentUri=data.getData();
             String timeStamp=new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             String imageFileName="JPEG_"+timeStamp+"."+getFileExt(contentUri);
             livreAff.setText("Image garde");
-            photoName=imageFileName;
-
+            name=imageFileName;
+            this.contentUri=contentUri;
+            //uploadPhototoFF(imageFileName,contentUri);
         }
     }
 
-   /* private void uploadPhototoFF(String name, Uri contentUri) {
+    private void uploadPhototoFF(String name, Uri contentUri) {
         StorageReference image =storRef.child("images/"+name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Log.d("TAG","URL:"+uri.toString());
-                        }
-                    });
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -150,7 +148,7 @@ public class FairePub extends AppCompatActivity {
                 Toast.makeText(FairePub.this,"Fail",Toast.LENGTH_SHORT).show();
             }
         });
-    }*/
+    }
 
     private String getFileExt(Uri contentUri) {
         ContentResolver c=getContentResolver();
@@ -160,7 +158,7 @@ public class FairePub extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode==101){
+        if(requestCode==CAMARA_REQUEST){
             if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
                 dispatchTakePictureIntent();
 
@@ -175,8 +173,8 @@ public class FairePub extends AppCompatActivity {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        //File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File storageDir=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        //File storageDir=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -210,19 +208,23 @@ public class FairePub extends AppCompatActivity {
             }
         }
     }
-    String url="";
+
 
     public void Enregistrer(View view) {
-
-        StorageReference image =storRef.child("images/"+photoName);
+        StorageReference image =storRef.child("images/"+name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                       url=uri.toString();
-                       Log.d("TAG","URL photo"+uri.toString());
+                       Log.d("URL","URL:"+uri.toString());
+                        l=new Livre(textTitre.getEditText().getText().toString(),
+                                textAuteur.getEditText().getText().toString(),
+                                textEdition.getEditText().getText().toString(),
+                                new Genre(
+                                        textVille.getEditText().getText().toString()),uri.toString());
+                        mDatabaseRef.enRegist(l);
                     }
                 });
             }
@@ -232,12 +234,7 @@ public class FairePub extends AppCompatActivity {
                 Toast.makeText(FairePub.this,"Fail",Toast.LENGTH_SHORT).show();
             }
         });
-        l=new Livre(textTitre.getEditText().getText().toString(),
-                textAuteur.getEditText().getText().toString(),
-                textEdition.getEditText().getText().toString(),
-                new Genre(
-                        textVille.getEditText().getText().toString()),url);
-        mDatabaseRef.enRegist(l);
+
         Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
 
