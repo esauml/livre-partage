@@ -11,10 +11,12 @@ public class Firebase {
     public void enRegist(Object o){
         mDatabaseRef.push().setValue(o);
     }
+
     @Override
     public String toString() {
         return "Firebase{" +
                 "mDatabaseRef=" + mDatabaseRef +
                 '}';
     }
+
 }

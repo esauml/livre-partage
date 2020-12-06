@@ -6,13 +6,13 @@ import java.util.Calendar;
 public class Publication {
     private String datePublication;
     private boolean status;
-    private Utilisateur utilisateur;
+    private String utilisateur;
     private Livre livre;
 
     public Publication() {
     }
 
-    public Publication( Utilisateur utilisateur, Livre livre) {
+    public Publication( String utilisateur, Livre livre) {
         this.datePublication = new SimpleDateFormat("yyyy.MM.dd").format(Calendar.getInstance().getTime());
         this.status = false;
         this.utilisateur = utilisateur;
@@ -45,11 +45,11 @@ public class Publication {
         this.status = status;
     }
 
-    public Utilisateur getUtilisateur() {
+    public String getUtilisateur() {
         return utilisateur;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
+    public void setUtilisateur(String utilisateur) {
         this.utilisateur = utilisateur;
     }
 

@@ -5,15 +5,16 @@ public class Livre {
     private String auteur;
     private String edition;
     private Genre genre;
-
+    private String uri;
     public Livre() {
     }
 
-    public Livre(String titre, String auteur, String edition, Genre genre) {
+    public Livre(String titre, String auteur, String edition, Genre genre,String uri) {
         this.titre = titre;
         this.auteur = auteur;
         this.edition = edition;
         this.genre = genre;
+        this.uri=uri;
     }
 
     @Override
@@ -23,7 +24,16 @@ public class Livre {
                 ", auteur='" + auteur + '\'' +
                 ", edition='" + edition + '\'' +
                 ", genre=" + genre +
+                ", uri='" + uri + '\'' +
                 '}';
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public String getTitre() {
