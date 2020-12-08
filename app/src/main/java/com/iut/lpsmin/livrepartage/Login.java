@@ -27,6 +27,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private ProgressBar loginProgressBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         loginEmail = (EditText) findViewById(R.id.loginEmail);
         loginPassword = (EditText) findViewById(R.id.loginPassword);
+
+        mAuth  = FirebaseAuth.getInstance();
+
 
         //loginProgressBar =(ProgressBar) findViewById(R.id.loginProgressBar);
     }
@@ -88,10 +92,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-
+                    startActivity(new Intent(Login.this,ProfileActivity.class));
                 }else {
-                    //Toast.makeText(MainActivity.this,"Failed to register! Try again!", Toast.LENGTH_LONG).show();
-                  //  loginProgressBar.setVisibility(View.VISIBLE);
+                    Toast.makeText(Login.this,"Failed to Login plsr check your Email or Password", Toast.LENGTH_LONG).show();
 
                 }
             }
