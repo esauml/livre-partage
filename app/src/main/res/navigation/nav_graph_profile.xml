@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_profile"
+    app:startDestination="@id/livresFragment">
+
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.iut.lpsmin.livrepartage.fragments.profile.InformationFragment"
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/action_informationFragment_to_livresFragment"
+            app:destination="@id/livresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/livresFragment"
+        android:name="com.iut.lpsmin.livrepartage.fragments.profile.LivresFragment"
+        android:label="fragment_livres"
+        tools:layout="@layout/fragment_livres" >
+        <action
+            android:id="@+id/action_livresFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
+        <action
+            android:id="@+id/action_livresFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wishListFragment"
+        android:name="com.iut.lpsmin.livrepartage.fragments.profile.WishListFragment"
+        android:label="fragment_wish_list"
+        tools:layout="@layout/fragment_wish_list" >
+        <action
+            android:id="@+id/action_wishListFragment_to_livresFragment"
+            app:destination="@id/livresFragment" />
+    </fragment>
+</navigation>
