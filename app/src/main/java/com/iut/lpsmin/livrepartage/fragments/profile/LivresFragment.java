@@ -12,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.iut.lpsmin.livrepartage.R;
+import com.iut.lpsmin.livrepartage.model.Firebase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +52,11 @@ public class LivresFragment extends Fragment {
         // initializes and parses all components from xml
         // initComponents(view);
         Log.d(TAG_CLASS, "Fragment Livre created");
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String currentUser = mAuth.getCurrentUser().getUid();
+
+        Log.d(TAG_CLASS, currentUser);
 
         view.findViewById(R.id.mInformationBtn).setOnClickListener(new View.OnClickListener() {
             @Override
