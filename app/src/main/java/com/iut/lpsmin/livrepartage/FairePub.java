@@ -85,10 +85,7 @@ public class FairePub extends AppCompatActivity {
         cam=findViewById(R.id.btCamara);
         gal=findViewById(R.id.btGalerie);
     storRef= FirebaseStorage.getInstance().getReference();
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        if(user!=null){
-            this.user=user.getUid();
-        }
+
         cam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,6 +217,7 @@ public class FairePub extends AppCompatActivity {
 
 
     public void Enregistrer(View view) {
+
         StorageReference image =storRef.child("images/"+name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -227,12 +225,13 @@ public class FairePub extends AppCompatActivity {
                 image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                       Log.d("URL","URL:"+uri.toString());
+                        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+String uid=user.getUid();
                         l=new Livre(textTitre.getEditText().getText().toString(),
                                 textAuteur.getEditText().getText().toString(),
                                 textEdition.getEditText().getText().toString(),
                                 new Genre(
-                                        textVille.getEditText().getText().toString()),uri.toString(),user);
+                                        textVille.getEditText().getText().toString()),uri.toString(),uid);
                         p=new Publication(l);
                         mDatabaseRef.enRegist(l);
                         mPubref.enRegist(p);

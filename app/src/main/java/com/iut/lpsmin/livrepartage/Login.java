@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    startActivity(new Intent(Login.this,ProfileActivity.class));
+                    startActivity(new Intent(Login.this,FairePub.class));
                 }else {
                     Toast.makeText(Login.this,"Failed to Login plsr check your Email or Password", Toast.LENGTH_LONG).show();
 

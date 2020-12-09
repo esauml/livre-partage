@@ -16,6 +16,7 @@ public class Livre {
         this.edition = edition;
         this.genre = genre;
         this.uri=uri;
+        this.user=user;
 
     }
 
