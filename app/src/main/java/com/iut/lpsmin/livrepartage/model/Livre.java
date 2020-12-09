@@ -6,10 +6,11 @@ public class Livre {
     private String edition;
     private Genre genre;
     private String uri;
+    private String user;
     public Livre() {
     }
 
-    public Livre(String titre, String auteur, String edition, Genre genre,String uri) {
+    public Livre(String titre, String auteur, String edition, Genre genre,String uri,String user) {
         this.titre = titre;
         this.auteur = auteur;
         this.edition = edition;
@@ -26,6 +27,7 @@ public class Livre {
                 ", edition='" + edition + '\'' +
                 ", genre=" + genre +
                 ", uri='" + uri + '\'' +
+                ", user='" + user + '\'' +
                 '}';
     }
 
@@ -67,5 +69,13 @@ public class Livre {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

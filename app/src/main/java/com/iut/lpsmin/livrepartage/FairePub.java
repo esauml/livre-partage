@@ -31,6 +31,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -53,16 +55,18 @@ public class FairePub extends AppCompatActivity {
     public static final int CAMARA_REQUEST = 101;
     private Livre l;
     private Publication p;
-    private Genre g;
+
     private TextInputLayout textTitre;
     private TextInputLayout textAuteur;
     private TextInputLayout textEdition;
     private TextInputLayout textVille;
     private Firebase mDatabaseRef;
+    private Firebase mPubref;
     private TextView livreAff;
+    private String user;
     String currentPhotoPath;
     Button cam,gal;
-    File photo;
+
     String name;
     StorageReference storRef;
     Uri contentUri;
@@ -72,6 +76,7 @@ public class FairePub extends AppCompatActivity {
 
         setContentView(R.layout.activity_faire_pub);
         mDatabaseRef=new Firebase("livres") ;
+        mPubref=new Firebase("publications");
         textTitre=findViewById(R.id.textTitre);
         textAuteur=findViewById((R.id.textAuteur));
         textEdition=findViewById(R.id.textEdition);
@@ -80,6 +85,10 @@ public class FairePub extends AppCompatActivity {
         cam=findViewById(R.id.btCamara);
         gal=findViewById(R.id.btGalerie);
     storRef= FirebaseStorage.getInstance().getReference();
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        if(user!=null){
+            this.user=user.getUid();
+        }
         cam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +131,7 @@ public class FairePub extends AppCompatActivity {
             this.sendBroadcast(mediaScanIntent);
             name=photo.getName();
             this.contentUri=contentUri;
-            //uploadPhototoFF(photo.getName(),contentUri);
+
         }
         if (requestCode == GALERIE_RECUEST) {
             Uri contentUri=data.getData();
@@ -131,7 +140,7 @@ public class FairePub extends AppCompatActivity {
             livreAff.setText("Image garde");
             name=imageFileName;
             this.contentUri=contentUri;
-            //uploadPhototoFF(imageFileName,contentUri);
+
         }
     }
 
@@ -223,8 +232,11 @@ public class FairePub extends AppCompatActivity {
                                 textAuteur.getEditText().getText().toString(),
                                 textEdition.getEditText().getText().toString(),
                                 new Genre(
-                                        textVille.getEditText().getText().toString()),uri.toString());
+                                        textVille.getEditText().getText().toString()),uri.toString(),user);
+                        p=new Publication(l);
                         mDatabaseRef.enRegist(l);
+                        mPubref.enRegist(p);
+
                     }
                 });
             }
