@@ -16,24 +16,6 @@
             android:orientation="horizontal"
             tools:layout_editor_absoluteY="12dp">
 
-            <Button
-                android:id="@+id/mInformationBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Information" />
-
-            <Button
-                android:id="@+id/mWishListBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="WishList" />
-
         </LinearLayout>
 
         <LinearLayout

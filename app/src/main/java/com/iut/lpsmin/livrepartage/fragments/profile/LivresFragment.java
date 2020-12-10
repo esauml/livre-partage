@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.iut.lpsmin.livrepartage.R;
-import com.iut.lpsmin.livrepartage.model.Firebase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +56,7 @@ public class LivresFragment extends Fragment {
 
         Log.d(TAG_CLASS, currentUser);
 
-        view.findViewById(R.id.mInformationBtn).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.mBooksBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(LivresFragment.this)

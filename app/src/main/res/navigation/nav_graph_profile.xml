@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_profile"
-    app:startDestination="@id/livresFragment">
+    app:startDestination="@id/informationFragment">
 
     <fragment
         android:id="@+id/informationFragment"
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_informationFragment_to_livresFragment"
             app:destination="@id/livresFragment" />
+        <action
+            android:id="@+id/action_informationFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/livresFragment"
@@ -22,9 +25,6 @@
         <action
             android:id="@+id/action_livresFragment_to_informationFragment"
             app:destination="@id/informationFragment" />
-        <action
-            android:id="@+id/action_livresFragment_to_wishListFragment"
-            app:destination="@id/wishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/wishListFragment"
@@ -32,7 +32,7 @@
         android:label="fragment_wish_list"
         tools:layout="@layout/fragment_wish_list" >
         <action
-            android:id="@+id/action_wishListFragment_to_livresFragment"
-            app:destination="@id/livresFragment" />
+            android:id="@+id/action_wishListFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
     </fragment>
 </navigation>
