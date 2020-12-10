@@ -41,6 +41,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.1'
     testImplementation 'junit:junit:4.13.1'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
+    // for firebase RecyclerView
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

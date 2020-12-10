@@ -86,9 +86,6 @@ public class InformationFragment extends Fragment {
     }
 
     private void initNavigation(View view) {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String currentUser = mAuth.getCurrentUser().getUid();
-
         view.findViewById(R.id.mBooksBtn).setOnClickListener(viewEvent -> {
             NavHostFragment.findNavController(InformationFragment.this)
                     .navigate(R.id.action_informationFragment_to_livresFragment);

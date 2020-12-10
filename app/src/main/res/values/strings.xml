@@ -18,5 +18,8 @@
     <string name="phone_number">Phone number</string>
     <string name="profile_change_values_change">Change my data</string>
     <string name="profile_change_values_save">Save</string>
+    <string name="auteur">Auteur</string>
+    <string name="edition">Edition</string>
+    <string name="genre">Genre</string>
     <!--    -->
 </resources>
