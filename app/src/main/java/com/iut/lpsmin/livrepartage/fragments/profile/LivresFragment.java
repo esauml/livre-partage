@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +29,7 @@ public class LivresFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     LivreAdapter mAdapter;
+
     DatabaseReference mReference;
     FirebaseDatabase mFirebaseDatabase;
 
@@ -71,11 +73,12 @@ public class LivresFragment extends Fragment {
                 .build();
 
         mAdapter = new LivreAdapter(options);
-        LinearLayoutManager linearLayoutManager =
-                new LinearLayoutManager(getContext(),
-                        LinearLayoutManager.VERTICAL,
-                        false);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+//        LinearLayoutManager linearLayoutManager =
+//                new LinearLayoutManager(getContext(),
+//                        LinearLayoutManager.VERTICAL,
+//                        false);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
     }
 

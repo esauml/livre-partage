@@ -1,7 +1,5 @@
 package com.iut.lpsmin.livrepartage.recyclerview.profile;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +15,13 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.iut.lpsmin.livrepartage.R;
 import com.iut.lpsmin.livrepartage.fragments.profile.LivresFragment;
 import com.iut.lpsmin.livrepartage.model.Livre;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.squareup.picasso.Picasso;
 
 public class LivreAdapter extends FirebaseRecyclerAdapter<
         Livre, LivreAdapter.LivreViewholder> {
 
     public LivreAdapter(
-            @NonNull FirebaseRecyclerOptions<Livre> options)
-    {
+            @NonNull FirebaseRecyclerOptions<Livre> options) {
         super(options);
     }
 
@@ -37,23 +31,19 @@ public class LivreAdapter extends FirebaseRecyclerAdapter<
     @Override
     protected void
     onBindViewHolder(@NonNull LivreViewholder holder,
-                     int position, @NonNull Livre model)
-    {
+                     int position, @NonNull Livre model) {
 
         Log.d(LivresFragment.TAG_CLASS, model.toString());
 
         // add image from url: firebase to ImageView
         //
-        try {
-            URL url = null;
-            url = new URL(model.getUri());
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            holder.imgBook.setImageBitmap(bmp);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+//            URL url = null;
+//            url = new URL(model.getUri());
+        // Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        // holder.imgBook.setImageBitmap(bmp);
+        Picasso.get().load(model.getUri()).into(holder.imgBook);
+
 
         holder.titreTextInputLayout.getEditText().setText(model.getTitre());
         holder.genreTextInputLayout.getEditText().setText(model.getGenre().getNom());
@@ -73,8 +63,7 @@ public class LivreAdapter extends FirebaseRecyclerAdapter<
     @Override
     public LivreViewholder
     onCreateViewHolder(@NonNull ViewGroup parent,
-                       int viewType)
-    {
+                       int viewType) {
         View view
                 = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_book, parent, false);
@@ -91,8 +80,7 @@ public class LivreAdapter extends FirebaseRecyclerAdapter<
         private TextInputLayout genreTextInputLayout;
         private TextInputLayout titreTextInputLayout;
 
-        public LivreViewholder(@NonNull View itemView)
-        {
+        public LivreViewholder(@NonNull View itemView) {
             super(itemView);
 
             imgBook = itemView.findViewById(R.id.livre_img);

@@ -140,7 +140,6 @@ public class InformationFragment extends Fragment {
         nChangeValuesButton.setOnClickListener((View view) -> {
             nBound = !nBound;
             nFullNameTextInputLayout.setEnabled(nBound);
-            nEmailAdressTextInputLayout.setEnabled(nBound);
             nPhoneNumberTextInputLayout.setEnabled(nBound);
 
             if (nBound)
