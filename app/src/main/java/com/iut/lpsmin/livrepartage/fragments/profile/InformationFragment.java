@@ -92,10 +92,12 @@ public class InformationFragment extends Fragment {
 
         });
 
-        view.findViewById(R.id.mWishListBtn).setOnClickListener(viewEvent -> {
-            NavHostFragment.findNavController(InformationFragment.this)
-                    .navigate(R.id.action_informationFragment_to_wishListFragment);
-        });
+        // button disabled
+        view.findViewById(R.id.mWishListBtn).setEnabled(false);
+//        view.findViewById(R.id.mWishListBtn).setOnClickListener(viewEvent -> {
+//            NavHostFragment.findNavController(InformationFragment.this)
+//                    .navigate(R.id.action_informationFragment_to_wishListFragment);
+//        });
     }
 
     private void addDataToComponents() {
