@@ -19,6 +19,7 @@
 
 
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".NavigationActivity"></activity>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

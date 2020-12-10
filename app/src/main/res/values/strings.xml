@@ -21,5 +21,8 @@
     <string name="auteur">Auteur</string>
     <string name="edition">Edition</string>
     <string name="genre">Genre</string>
+    <string name="my_profile">My Profile</string>
+    <string name="publish_book">Publish Book</string>
+    <string name="logout">Logout</string>
     <!--    -->
 </resources>
