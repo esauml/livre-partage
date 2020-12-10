@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth  = FirebaseAuth.getInstance();
 
 
-        //loginProgressBar =(ProgressBar) findViewById(R.id.loginProgressBar);
+        loginProgressBar =(ProgressBar) findViewById(R.id.loginProgressBar);
     }
 
     public void goToRegister(View view) {
@@ -86,13 +86,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             loginPassword.requestFocus();
             return;
         }
-       // loginProgressBar.setVisibility(View.VISIBLE);
+        loginProgressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(logEmail,logpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    startActivity(new Intent(Login.this,FairePub.class));
+                    startActivity(new Intent(Login.this,NavigationActivity.class));
                 }else {
                     Toast.makeText(Login.this,"Failed to Login plsr check your Email or Password", Toast.LENGTH_LONG).show();
 

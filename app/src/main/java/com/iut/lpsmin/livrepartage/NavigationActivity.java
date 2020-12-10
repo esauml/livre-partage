@@ -24,10 +24,10 @@ public class NavigationActivity extends AppCompatActivity {
 //        mBtnPublish = findViewById(R.id.btn_publish_book);
 
 
-        findViewById(R.id.btn_publish_book).setEnabled(false);
-//        findViewById(R.id.btn_logout).setOnClickListener(view -> {
-//            startActivity(new Intent(NavigationActivity.this, MainActivity.class));
-//        });
+       // findViewById(R.id.btn_publish_book).setEnabled(false);
+        findViewById(R.id.btn_logout).setOnClickListener(view -> {
+            startActivity(new Intent(NavigationActivity.this, MainActivity.class));
+        });
 
         findViewById(R.id.btn_profile).setOnClickListener(view -> {
             startActivity(new Intent(NavigationActivity.this, ProfileActivity.class));
