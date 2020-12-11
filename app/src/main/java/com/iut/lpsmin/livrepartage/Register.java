@@ -48,7 +48,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         progressBar     = findViewById(R.id.progressBar);
 
         if (fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),Login.class));
             finish();
         }
 
@@ -63,7 +63,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.appNameB:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, Login.class));
                 break;
             case R.id.registerBtn:
                 registerUser();
@@ -123,6 +123,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
                                     Toast.makeText(Register.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(Register.this,NavigationActivity.class));
                                     progressBar.setVisibility(View.VISIBLE);
                                 }else{
                                     Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_SHORT).show();

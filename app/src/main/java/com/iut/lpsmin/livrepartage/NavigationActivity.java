@@ -29,7 +29,9 @@ public class NavigationActivity extends AppCompatActivity {
 
        // findViewById(R.id.btn_publish_book).setEnabled(false);
         findViewById(R.id.btn_logout).setOnClickListener(view -> {
-            startActivity(new Intent(NavigationActivity.this, MainActivity.class));
+            FirebaseAuth.getInstance().signOut(); //so i can logout
+            startActivity(new Intent(getApplicationContext(),Login.class));
+            finish();
         });
 
         findViewById(R.id.btn_profile).setOnClickListener(view -> {
@@ -42,9 +44,5 @@ public class NavigationActivity extends AppCompatActivity {
         });
     }
 
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut(); //so i can logout
-        startActivity(new Intent(getApplicationContext(),Login.class));
-        finish();
-    }
+
 }
