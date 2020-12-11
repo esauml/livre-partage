@@ -2,9 +2,12 @@ package com.iut.lpsmin.livrepartage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -37,5 +40,11 @@ public class NavigationActivity extends AppCompatActivity {
         findViewById(R.id.btn_publish_book).setOnClickListener(view -> {
             startActivity(new Intent(NavigationActivity.this, FairePub.class));
         });
+    }
+
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut(); //so i can logout
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
     }
 }
